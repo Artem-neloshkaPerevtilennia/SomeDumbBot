@@ -1,0 +1,15 @@
+C:\GitHub\WeatherBot\bin\Debug\net8.0\WeatherBot.exe
+C:\GitHub\WeatherBot\bin\Debug\net8.0\WeatherBot.deps.json
+C:\GitHub\WeatherBot\bin\Debug\net8.0\WeatherBot.runtimeconfig.json
+C:\GitHub\WeatherBot\bin\Debug\net8.0\WeatherBot.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\WeatherBot.pdb
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.AssemblyInfoInputs.cache
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.AssemblyInfo.cs
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.csproj.CoreCompileInputs.cache
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.sourcelink.json
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.dll
+C:\GitHub\WeatherBot\obj\Debug\net8.0\refint\WeatherBot.dll
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.pdb
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.genruntimeconfig.cache
+C:\GitHub\WeatherBot\obj\Debug\net8.0\ref\WeatherBot.dll
