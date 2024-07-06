@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "waHAbpyUSL9y0xRzXp/5dyl4dMO0ozs2qAGYS0WfRYXsltXjlYTbLWJqK0O+xK1Slf0AhA3nPZ3Fn5LArE0sJQ==",
+  "dgSpecHash": "0hWiuZsjCbqMkDgsrv9sruqmGw2IKfhOmZhKlqlXYg33pN9vn/ZJoHirmgz9s9mANqC2kvC0kmawtx7DJzTYWw==",
   "success": true,
   "projectFilePath": "C:\\GitHub\\WeatherBot\\WeatherBot.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\vital\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\vital\\.nuget\\packages\\telegram.bot\\19.0.0\\telegram.bot.19.0.0.nupkg.sha512"
+  ],
   "logs": []
 }
