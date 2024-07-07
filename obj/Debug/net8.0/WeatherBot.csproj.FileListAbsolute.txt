@@ -13,3 +13,7 @@ C:\GitHub\WeatherBot\obj\Debug\net8.0\refint\WeatherBot.dll
 C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.pdb
 C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.genruntimeconfig.cache
 C:\GitHub\WeatherBot\obj\Debug\net8.0\ref\WeatherBot.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\Telegram.Bot.dll
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.csproj.AssemblyReference.cache
+C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.csproj.CopyComplete
