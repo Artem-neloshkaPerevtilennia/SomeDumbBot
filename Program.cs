@@ -16,16 +16,46 @@ namespace WeatherBot
     {
       var message = update.Message;
       if (message.Text == null) return;
-      if (message.Text.Contains("hui"))
+
+      switch (message.Text.ToLower())
       {
-        await botClient.SendTextMessageAsync(message.Chat.Id, "сам такий");
-        return;
+        case "/integral":
+          await SendPhoto(botClient, message.Chat.Id, "photos/integral_page1.jpg", "Інтеграли (ст. 1)");
+          await SendPhoto(botClient, message.Chat.Id, "photos/integral_page2.jpg", "Інтеграли (ст. 2)");
+          await SendPhoto(botClient, message.Chat.Id, "photos/integral_page3.jpg", "Інтеграли (ст. 3)");
+          return;
+
+        case "/derivative":
+          await SendPhoto(botClient, message.Chat.Id, "photos/derivative.jpg", "Похідні");
+          return;
+
+        default:
+          await botClient.SendTextMessageAsync(message.Chat.Id, "Unknown option");
+          return;
       }
     }
 
     private static async Task Error(ITelegramBotClient client, Exception exception, CancellationToken token)
     {
       throw new NotImplementedException();
+    }
+
+    private static async Task SendPhoto(ITelegramBotClient telegramBotClient, long chatId, string path, string caption)
+    {
+      if (System.IO.File.Exists(path))
+      {
+        using (var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read))
+        {
+          var inputFile = new InputFileStream(fileStream);
+
+          await telegramBotClient.SendPhotoAsync(chatId, inputFile, caption: caption);
+        }
+      }
+      else
+      {
+        Console.WriteLine("Помилка відправки");
+        return;
+      }
     }
   }
 }
