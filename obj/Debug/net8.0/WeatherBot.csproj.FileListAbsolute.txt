@@ -17,3 +17,7 @@ C:\GitHub\WeatherBot\bin\Debug\net8.0\Newtonsoft.Json.dll
 C:\GitHub\WeatherBot\bin\Debug\net8.0\Telegram.Bot.dll
 C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.csproj.AssemblyReference.cache
 C:\GitHub\WeatherBot\obj\Debug\net8.0\WeatherBot.csproj.CopyComplete
+C:\GitHub\WeatherBot\bin\Debug\net8.0\MihaZupan.HttpToSocks5Proxy.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\Seq.App.Telegram.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\Seq.Apps.dll
+C:\GitHub\WeatherBot\bin\Debug\net8.0\Serilog.dll
