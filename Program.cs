@@ -9,7 +9,7 @@ namespace WeatherBot
   {
     static void Main(string[] args)
     {
-      var bot = new TelegramBotClient("7012783078:AAH3CIDoJ7mvfWr2TCMsz2W6XeKcg3ZKgts");
+      var bot = new TelegramBotClient(BOT_TOKEN);
       bot.StartReceiving(Update, Error);
       Console.ReadKey();
     }
