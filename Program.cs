@@ -42,7 +42,7 @@ namespace WeatherBot
           await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1jfuoznsb-THDrkay4JKcVscrih461JYk", "Таблиця похідних");
           return;
 
-        case "back":
+        case "backToMenu":
           await telegramBotClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Прєт 👋. Я можу кинути тобі формулки з матану 🤓☝️. Для цього введи команду /formula");
           return;
 
@@ -94,7 +94,7 @@ namespace WeatherBot
           InlineKeyboardButton.WithCallbackData("Таблиця похідних 📈", "derivative"),
         ],
         [
-          InlineKeyboardButton.WithCallbackData("Назад 🔙", "back")
+          InlineKeyboardButton.WithCallbackData("Назад до меню 🔙", "backToMenu")
         ]
       };
 
