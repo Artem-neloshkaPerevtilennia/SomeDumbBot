@@ -33,21 +33,23 @@ namespace WeatherBot
       switch (callbackQuery.Data)
       {
         case "integral":
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "photos/integral_page1.jpg", "Таблиця інтегралів (ст. 1)");
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "photos/integral_page2.jpg", "Таблиця інтегралів (ст. 2)");
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "photos/integral_page3.jpg", "Таблиця інтегралів (ст. 3)");
-          break;
+          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1_TmW1-k_uMhRlsWJQSo3e8r3obWaI4Lg", "Таблиця інтегралів (ст. 1)");
+          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1jCmc64x92n1yl-jKEbp4coCi81R2Rg5L", "Таблиця інтегралів (ст. 2)");
+          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1bu_kJIqT1-auY_CnCmy0lT_a7ghu1Ndd", "Таблиця інтегралів (ст. 3)");
+          return;
 
         case "derivative":
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "photos/derivative.jpg", "Таблиця похідних");
-          break;
+          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1jfuoznsb-THDrkay4JKcVscrih461JYk", "Таблиця похідних");
+          return;
+
+        case "back":
+          await telegramBotClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Прєт 👋. Я можу кинути тобі формулки з матану 🤓☝️. Для цього введи команду /formula");
+          return;
 
         default:
           await telegramBotClient.SendTextMessageAsync(callbackQuery.Message.Chat.Id, "Нема такої опції");
           return;
       }
-
-      return;
     }
 
     private static async Task HandleMessage(ITelegramBotClient botClient, Message message)
@@ -57,7 +59,7 @@ namespace WeatherBot
       switch (message.Text.ToLower())
       {
         case "/start":
-          await botClient.SendTextMessageAsync(message.Chat.Id, "Прєт. Я можу кинути тобі формулки з матану. Для цього введи команду /formula");
+          await SendMainMenu(botClient, message.Chat.Id);
           return;
 
         case "/formula":
@@ -75,20 +77,12 @@ namespace WeatherBot
       throw new NotImplementedException();
     }
 
-    private static async Task SendPhoto(ITelegramBotClient telegramBotClient, long chatId, string path, string caption)
+    private static async Task SendPhoto(ITelegramBotClient telegramBotClient, long chatId, string fileId, string caption)
     {
-      if (System.IO.File.Exists(path))
-      {
-        using var fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
-        var inputFile = InputFile.FromStream(fileStream);
-        await telegramBotClient.SendPhotoAsync(chatId, inputFile, caption: caption);
-        Console.WriteLine("закинув");
-      }
-      else
-      {
-        Console.WriteLine("Помилка відправки");
-        return;
-      }
+      string url = $"https://drive.google.com/uc?export=view&id={fileId}";
+      var inputFile = InputFile.FromUri(url);
+      await telegramBotClient.SendPhotoAsync(chatId, inputFile, caption: caption);
+      Console.WriteLine("закинув");
     }
 
     private static async Task ChooseOptionInline(ITelegramBotClient telegramBotClient, long chatId)
@@ -96,13 +90,21 @@ namespace WeatherBot
       var buttons = new InlineKeyboardButton[][]
       {
         [
-          InlineKeyboardButton.WithCallbackData("Таблиця інтегралів", "integral"),
-          InlineKeyboardButton.WithCallbackData("Таблиця похідних", "derivative"),
+          InlineKeyboardButton.WithCallbackData("Таблиця інтегралів ∫", "integral"),
+          InlineKeyboardButton.WithCallbackData("Таблиця похідних 📈", "derivative"),
         ],
+        [
+          InlineKeyboardButton.WithCallbackData("Назад 🔙", "back")
+        ]
       };
 
-      await telegramBotClient.SendTextMessageAsync(chatId, "Яку саме формулу тобі треба?",
+      await telegramBotClient.SendTextMessageAsync(chatId, "Яку саме формулу тобі треба? 📝",
       replyMarkup: new InlineKeyboardMarkup(buttons));
+    }
+
+    private static async Task SendMainMenu(ITelegramBotClient telegramBotClient, long chatId)
+    {
+      await telegramBotClient.SendTextMessageAsync(chatId, "Прєт 👋. Я можу кинути тобі формулки з матану 🤓☝️. Для цього введи команду /formula");
     }
   }
 }
