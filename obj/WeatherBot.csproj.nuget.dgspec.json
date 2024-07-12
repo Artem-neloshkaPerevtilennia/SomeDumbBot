@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\GitHub\\WeatherBot\\WeatherBot.csproj": {}
+    "C:\\GitHub\\SomeDumbBot\\WeatherBot.csproj": {}
   },
   "projects": {
-    "C:\\GitHub\\WeatherBot\\WeatherBot.csproj": {
+    "C:\\GitHub\\SomeDumbBot\\WeatherBot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\GitHub\\WeatherBot\\WeatherBot.csproj",
+        "projectUniqueName": "C:\\GitHub\\SomeDumbBot\\WeatherBot.csproj",
         "projectName": "WeatherBot",
-        "projectPath": "C:\\GitHub\\WeatherBot\\WeatherBot.csproj",
+        "projectPath": "C:\\GitHub\\SomeDumbBot\\WeatherBot.csproj",
         "packagesPath": "C:\\Users\\vital\\.nuget\\packages\\",
-        "outputPath": "C:\\GitHub\\WeatherBot\\obj\\",
+        "outputPath": "C:\\GitHub\\SomeDumbBot\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vital\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "Seq.App.Telegram": {
               "target": "Package",
               "version": "[2021.4.1-ci0001, )"

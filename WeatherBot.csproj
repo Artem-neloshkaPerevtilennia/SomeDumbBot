@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetEnv" Version="3.0.0" />
     <PackageReference Include="Seq.App.Telegram" Version="2021.4.1-ci0001" />
     <PackageReference Include="Telegram.Bot" Version="19.0.0" />
   </ItemGroup>

@@ -2,14 +2,22 @@
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
+using DotNetEnv;
+using System.Text.RegularExpressions;
 
-namespace WeatherBot
+namespace SomeDumbBot
 {
   class Program
   {
     static void Main(string[] args)
     {
-      var bot = new TelegramBotClient(BOT_TOKEN);
+      Env.Load();
+
+      var botToken = Environment.GetEnvironmentVariable("BOT_TOKEN");
+
+      if (botToken == null) return;
+
+      var bot = new TelegramBotClient(botToken);
       bot.StartReceiving(Update, Error);
       Console.ReadKey();
     }
@@ -33,9 +41,7 @@ namespace WeatherBot
       switch (callbackQuery.Data)
       {
         case "integral":
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1_TmW1-k_uMhRlsWJQSo3e8r3obWaI4Lg", "Таблиця інтегралів (ст. 1)");
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1jCmc64x92n1yl-jKEbp4coCi81R2Rg5L", "Таблиця інтегралів (ст. 2)");
-          await SendPhoto(telegramBotClient, callbackQuery.Message.Chat.Id, "1bu_kJIqT1-auY_CnCmy0lT_a7ghu1Ndd", "Таблиця інтегралів (ст. 3)");
+          await SendAlbum(telegramBotClient, callbackQuery.Message.Chat.Id, "1_TmW1-k_uMhRlsWJQSo3e8r3obWaI4Lg", "1jCmc64x92n1yl-jKEbp4coCi81R2Rg5L", "1bu_kJIqT1-auY_CnCmy0lT_a7ghu1Ndd");
           return;
 
         case "derivative":
@@ -105,6 +111,20 @@ namespace WeatherBot
     private static async Task SendMainMenu(ITelegramBotClient telegramBotClient, long chatId)
     {
       await telegramBotClient.SendTextMessageAsync(chatId, "Прєт 👋. Я можу кинути тобі формулки з матану 🤓☝️. Для цього введи команду /formula");
+    }
+
+    private static async Task SendAlbum(ITelegramBotClient telegramBotClient, long chatId, params string[] filesId)
+    {
+      IAlbumInputMedia[] albumInputMedia = new IAlbumInputMedia[filesId.Length];
+      for (int i = 0; i < filesId.Length; i++)
+      {
+        albumInputMedia[i] = new InputMediaPhoto(new InputFileUrl($"https://drive.google.com/uc?export=view&id={filesId[i]}"))
+        {
+          Caption = $"ст. {i + 1}"
+        };
+      }
+
+      await telegramBotClient.SendMediaGroupAsync(chatId, albumInputMedia);
     }
   }
 }
